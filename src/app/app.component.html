@@ -1,0 +1,35 @@
+<div class="container">
+  <div #dropArea class="files-area" [ngClass]="dragOver ? 'highlight' : '' ">
+    <h1 class="title">
+      Cargar Archivos
+    </h1>
+    <hr class="divider">
+
+    <div class="files-message">
+      <span class="message">
+        Arrastra hasta acá los archivos que desees cargar o presiona el botón para buscarlos
+        y/o seleccionarlos
+      </span>
+    </div>
+
+    <div class="selected-files">
+      <div *ngFor="let file of selectedFiles" class="file">
+        {{ file.name }}
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button (click)="openSelectFileDialog()" class="btn-select-files">
+        Seleccionar archivos
+      </button>
+    </div>
+
+    <input
+      #inputFileElement
+      type="file"
+      [hidden]="true"
+      (change)="onSelectFiles($event)"
+      [multiple]="allowMultipleFiles"
+    >
+  </div>
+</div>
